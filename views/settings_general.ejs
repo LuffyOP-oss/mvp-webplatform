@@ -1,0 +1,141 @@
+<% include partials/header.ejs %>
+
+<div class="container main">
+    <div class="col-md-3">
+        <div class="m-page--sidebar">
+            <div class="m-page--sidebar--navigation">
+                <a class="m-page--sidebar--navigation--item m-page--sidebar--navigation--item-active" href="/settings/general"><i
+                        class="fas fa-cogs"></i><span>
+                        <%= __('setting_general')%></span></a>
+                <a class="m-page--sidebar--navigation--item" href="/settings/changepassword"><i class="fas fa-unlock-alt"></i><span>
+                        <%= __('setting_general_2')%></span></a>
+                <a class="m-page--sidebar--navigation--item" href="/settings/twoFactor"><i class="fas fa-shield-alt"></i><span>
+                        <%= __('2fa')%></span></a>
+
+                <a class="m-page--sidebar--navigation--item" data-toggle="modal" data-target="#modal_referral"><i class="fas fa-bullhorn"></i><span>REFERRAL LINK</span></a>
+                <div id="modal_referral" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                      
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><%= __('referrel_modal_1')%></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p><%= __('referrel_text_1')%></p>
+                                <input class="link-referrel" type="text" readonly value="https://touristreivew.io/register?referrer=<%= userid %>"/>
+                                <p><%= __('referrel_text_2')%></p>
+                                <input class="link-referrel" type="text" readonly value="<%= userid %>"/>
+                              <p><%= __('referrel_modal_2')%> <%= seting['referral_bonus'] %> TRET</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                      
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="row-setting">
+                <form method="POST">
+                    <div class="row-header">
+                        <h4 class="setting-name">
+                            <%= __('setting_general_1')%>
+                        </h4> <button>
+                            <%= __('luu_button')%></button>
+                    </div>
+                    <% if(error != ""){ %><p class="error_text"><%= error %></p><% }else{ if(success != ""){%><p class="success_text"><%= success %></p><% }} %>
+                    <div class="divTable">
+                        <div class="divTableBody">
+                            <div class="divTableRow">
+                                <div class="divTableCell settingsListItemLabel">
+                                    <%= __('first_name')%>
+                                </div>
+                                <div class="divTableCell settingsListItem"><input type="text" name="firstname"
+                                        placeholder="<%= __('first_name')%>" value="<%= info_user['firstname'] %>" required /></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell settingsListItemLabel">
+                                    <%= __('last_name')%>
+                                </div>
+                                <div class="divTableCell settingsListItem"><input type="text" name="lastname"
+                                        placeholder="<%= __('last_name')%>" value="<%= info_user['lastname'] %>" required /></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell settingsListItemLabel">
+                                    <%= __('ten_nguoi_dung')%>
+                                </div>
+                                <div class="divTableCell settingsListItem">https://touristreivew.io/<input type="text"
+                                        name="displayName" placeholder="<%= __('ten_nguoi_dung')%>" value="<%= username %>"
+                                        required /></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell settingsListItemLabel">
+                                    <%= __('email')%>
+                                </div>
+                                <div class="divTableCell settingsListItem">
+                                    <%= info_user['email'] %>
+                                </div>
+                            </div>
+                            <div class="divTableRow">
+                                    <div class="divTableCell settingsListItemLabel">
+                                        <%= __('gioi_tinh_0')%>
+                                    </div>
+                                    <div class="divTableCell settingsListItem">
+                                            <input type="radio" name="sex" value="0" <% if(info_user['sex']=="0"){ %> checked <% } %>><%= __('gioi_tinh_1') %><div class="space"></div>
+                                            <input type="radio" name="sex" value="1" <% if(info_user['sex']=="1"){ %> checked <% } %>><%= __('gioi_tinh_2') %>
+                                    </div>
+                            </div>
+                            <div class="divTableRow">
+                                    <div class="divTableCell settingsListItemLabel">
+                                        <%= __('ngay_sinh')%>
+                                    </div>
+                                    <div class="divTableCell settingsListItem">
+                                        <input type="date" name="bday" value="<%= bd %>" id="bday">
+                                    </div>
+                            </div>
+                            <div class="divTableRow">
+                                    <div class="divTableCell settingsListItemLabel">
+                                        <%= __('dia_chi')%>
+                                    </div>
+                                    <div class="divTableCell settingsListItem">
+                                        <input type="text" name="address" value="<%= info_user['address'] %>">
+                                    </div>
+                            </div>
+                            <div class="divTableRow">
+                                    <div class="divTableCell settingsListItemLabel">
+                                        <%= __('quoc_gia')%>
+                                    </div>
+                                    <div class="divTableCell settingsListItem">
+                                        <select name="country">
+                                            <% for(var i=0;i < country.length;i++ ){%>
+                                                <option value="<%= country[i]['id'] %>" <% if(country[i]['id'] == info_user['country']){ %>selected<% } %>  ><%= country[i]['nicename'] %></option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell settingsListItemLabel">
+                                    <%= __('ngon_ngu')%>
+                                </div>
+                                <div class="divTableCell settingsListItem">
+                                    <select name="language">
+                                        <option value="vn" <% if(info_user['language']=="vn"){ %> selected <% } %>>Vietnamese</option>
+                                        <option value="en" <% if(info_user['language']=="en"){ %> selected <% } %>>English</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is social network html5 template available in themeforest......" />
+    <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+    <meta name="robots" content="index, follow" />
+    <title>TouristReview <%= __('LoginTitle')%></title>
+
+    <!-- Stylesheets
+    ================================================= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/ionicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="/assets/images/fav.png" />
+    <style>
+        .navbar-brand {
+            padding: 5px 15px !important;
+        }
+
+        .reg-form-container{
+            min-height: 265px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header
+    ================================================= -->
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu loginpage">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false"> Đăng nhập
+                    </button>
+                    <a class="navbar-brand" href="/"><img src="/assets/images/logo-white.png" alt="TouristReview" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!--Header End-->
+
+    <!-- Landing Page Contents
+    ================================================= -->
+    <div id="lp-register">
+        <div class="container wrapper">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="intro-texts">
+                        <h1 class="text-white">
+                            <%= __('landingpage_cap_2')%>
+                        </h1>
+                        <p>
+                            <%= __('landingpage_cap_1')%>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-sm-offset-1">
+                    <div class="reg-form-container">
+                        <!--Registration Form Contents-->
+                        <div class="tab-content">
+                                <!--Login-->
+                                <div class="tab-pane active" id="login">
+                                  <h3><%= __('LoginTitle')%></h3>
+                                  <span class="error-text">  <%= mess %></span>
+                                  <!--Login Form-->
+                                  <form name="Login_form" id="Login_form" method="POST" action="/login">
+                                     <div class="row">
+                                      <div class="form-group col-xs-12">
+                                        <label for="my-email" class="sr-only">Email</label>
+                                        <input id="my-email" class="form-control input-group-lg" type="text" name="email" title="Enter Email" placeholder="<%= __('placeholder_login_1')%>">
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="form-group col-xs-12">
+                                        <label for="my-password" class="sr-only">Password</label>
+                                        <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="<%= __('placeholder_login_2')%>">
+                                      </div>
+                                    </div>
+                                    <p><a href="#"><%= __('placeholder_login_3')%></a></p>
+                                    <button type="submit" class="btn btn-primary"><%= __("button_login_1")%></button>
+                                  </form><!--Login Form Ends--> 
+                                  
+                                </div>
+                              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--preloader-->
+    <div id="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts
+    ================================================= -->
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/register.js"></script>
+    <script src="/assets/js/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.appear.min.js"></script>
+    <script src="/assets/js/jquery.incremental-counter.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+</body>
+
+</html>

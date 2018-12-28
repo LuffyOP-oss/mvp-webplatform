@@ -1,0 +1,82 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+
+    <!-- Timeline  ================================================= -->
+    <div class="timeline">
+        <div class="timeline-cover">
+            <label class="avatar-img">
+                <div class="edit-cover"><a>Thay đổi</a></div>
+                <img src="<%= cover %>" alt="" class="img-responsive cover-image">
+                <input type="file" class="sr-only" id="cover-input" name="image" accept="image/*">
+            </label>
+        </div>
+        <div id="page-contents">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-info">
+                        <label class="avatar-img">
+                            <% if(is_owner){ %>
+                            <div class="edit-avatar"><a>
+                                    <%= __('change_avatar')%></a></div>
+                            <% } %>
+                            <img src="<%= avatar %>" alt="" class="img-responsive profile-photo">
+                            <input type="file" class="sr-only" id="avatar-input" name="image" accept="image/*">
+                        </label>
+                        <div class="info">
+                            <h3 class="name">
+                                <%= namess %>
+                            </h3>
+                            <h4 class="nichname">@<%= userid %></h4>
+                            <div class="col-md-6 follow-count">
+                                <a>
+                                    <p>0</p>
+                                    <span><%= __('nguoi_theo_doi')%></span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 view-count">
+                                <a>
+                                    <p>0</p>
+                                    <span><%= __('nguoi_da_xem')%></span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                    <div class="create-post">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <div class="form-group">
+                                    <img src="<%= avatar %>" alt="" class="profile-photo profile-photo-md" />
+                                    <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
+                                        placeholder="<%= __('write_what_you_wish')%>"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <div class="tools">
+                                    <ul class="publishing-tools list-inline">
+                                        <li><a href="#"><i class="ion-compose"></i></a></li>
+                                        <li><a href="#"><i class="ion-images"></i></a></li>
+                                        <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
+                                        <li><a href="#"><i class="ion-map"></i></a></li>
+                                    </ul>
+                                    <button class="btn btn-primary pull-right">
+                                        <%= __('post_button')%></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include Modal/modal.ejs %>
+<% include partials/footer.ejs %>

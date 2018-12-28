@@ -1,0 +1,37 @@
+<% include partials/header.ejs %>
+
+<div class="container main">
+    <div class="col-md-3 hidden-md-custom">
+        <div class="row">
+            <div class="header-title">
+                <label class="title">RECOMMENDED</label>
+            </div>
+        </div>
+    
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="create-post main">
+                <div class="avatar">
+                    <img src="<%= avatar %>" alt="<%= namess%>" class="post-avatar" />
+                </div>
+                <form>
+                    <textarea class="mdl-textfield__input ng-pristine ng-valid ng-touched" id="message"
+                        mwltextinputautocomplete="" name="message" placeholder="Bạn đang nghĩ rằng..." type="text"
+                        style="height: 80px;"></textarea>
+                    <div class="mdl-card__actions">
+                      <button class="m-btn m-btn--slim m-btn m-btn--with-icon" type="submit"><span>Đăng
+                                bài viết</span><i class="fas fa-location-arrow"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 hidden-md-custom">
+        <div class="header-title">
+            <label class="title">MESSAGE</label>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

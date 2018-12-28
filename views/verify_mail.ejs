@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is social network html5 template available in themeforest......" />
+    <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+    <meta name="robots" content="index, follow" />
+    <title><%= __('verify_mail_title') %> - TouristReview</title>
+
+    <!-- Stylesheets ================================================= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="/assets/images/fav.png" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+    <style>
+        #header-inverse nav.menu{
+            margin-top: 0px;
+        }
+        .wrapper {
+            background-color: rgb(0, 74, 124);
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        div.content {
+            text-align: center;
+        }
+
+        .maincontent {
+            min-width: 250px;
+            max-width: 75%;
+            display: inline-block;
+            margin: auto;
+            background-color: #fff;
+            font-size: 1.7rem;
+            padding: 15px 120px;
+            margin-top: 135px;
+            font-weight: 400;
+            line-height: 35px;
+        }
+        i.error {
+            color: red;
+        }
+        i.success {
+            color: #4CAF50;
+        }
+        .maincontent .error_2 {
+            color: red;
+            font-style: italic;
+            line-height: 3rem;
+        }
+        .maincontent .error_3 {
+            color: #4CAF50;
+        }
+        .maincontent i {
+            font-size: 5rem;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+    <!-- Header
+    ================================================= -->
+    <header id="header-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top menu loginpage">
+            <div class="container">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" alt="TouristReview" /></a>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+    </header>
+    <!--Header End-->
+
+    <!-- Landing Page Contents
+    ================================================= -->
+    <div class="content">
+        <div class="maincontent">
+                <div class="error_1"><%= __('verify_mail_content_1') %></div>
+                <div class="error_1"><%= __('verify_mail_content_2') %></div>
+                <a href="https://touristreview.io/login/resendemail/<%= token %>"><%= __('verify_mail_content_3')%></a>
+        </div>
+    </div>
+
+    <!--preloader-->
+    <div id="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+    <!-- Scripts
+    ================================================= -->
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/register.js"></script>
+    <script src="/assets/js/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.appear.min.js"></script>
+    <script src="/assets/js/jquery.incremental-counter.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+</body>
+
+</html>

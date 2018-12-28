@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This is social network html5 template available in themeforest......" />
+  <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+  <meta name="robots" content="index, follow" />
+  <title>
+    <%= title %>
+  </title>
+
+  <!-- Stylesheets
+    ================================================= -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/cropper.css" />
+
+  <!--Google Font-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous">
+  <!--Favicon-->
+  <link rel="shortcut icon" type="image/png" href="/assets/images/fav.png" />
+</head>
+
+<body>
+  <input type="text" hidden id="token" name="token" value="<%= token %>">
+  <!-- Header
+    ================================================= -->
+  <header id="header">
+    <nav class="navbar navbar-default navbar-fixed-top menu">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="/assets/images/logo.png" alt="logo" /></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right main-menu">
+            <li class="dropdown">
+              <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="userbar"><img src="<%= avatar %>" alt="<%= namess%>" class="profile-photo" /></div>
+              </div>
+              <ul class="dropdown-menu login">
+                <li class="level"><a href="/rank"><i class="fas fa-user-plus"></i>New member</a></li>
+                <li><a href="/<%= userid %>">
+                    <%= __('personal_page')%></a></li>
+                <li><a href="/settings/general"><%= __('cai_dat_tai_khoan')%></a></li>
+                <li><a href="/logout">
+                    <%= __('logout_button')%></a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="nav navbar-nav navbar-right main-menu icon-menu-main">
+            <div class="icon-menu friend_request">
+              <a title="<%= __('friend_request')%>"><i class="fas fa-users"></i></a>
+            </div>
+            <div class="icon-menu message">
+              <a title="<%= __('message')%>"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="icon-menu notification">
+              <a title="<%= __('notification')%>"><i class="fas fa-bell"></i>
+                <% if(notificount > 0){ %>
+                <label class="count"><%= notificount %></label>
+                <% }%>
+              </a>
+              <div class="panelHead">
+                <div class="p-header">
+                  <label class="label-left"><%= __("notification")%></label>
+                  <a class="label-right readall"><%= __('danhdaudadoc')%></a>
+                </div>
+                <div class="p-container">
+                  <div class="items">
+                    <% if(notifi.length > 0){
+                      for(var i = 0; i < notifi.length;i++){
+                      %>
+                    <a href="<%= notifi[i]['link']%>" class="item">
+                      <div class="item <%= notifi[i]['viewed']%>">
+                        <img class="image" src="<%= notifi[i]['avatar']%>">
+                        <div class="main">
+                          <span class="content i18n"><%= notifi[i]['content']%></span>
+                          <span class="timer"><%= notifi[i]['time']%></span>
+                        </div>
+                      </div>
+                    </a>
+                    <%}}else{%>
+                      <div class="no-notify"><p><%= __('no_notifi')%><p></div>
+                      <% }%>
+                  </div>
+                </div>
+                <div class="p-footer">
+
+                  <a class="label-midl viewMore"><%= __('read_all')%></a>
+                </div>
+              </div>
+            </div>
+            <div class="icon-menu wallet">
+              <a href="/wallet" title="<%= __('wallet')%>"><i class="fas fa-wallet"></i></a>
+            </div>
+
+
+
+          </div>
+          <form class="navbar-form navbar-right hidden-sm">
+            <div class="form-group search-form">
+              <i class="fas fa-search icon"></i>
+              <input type="text" class="form-control " placeholder="<%= __('text_search')%>">
+            </div>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+  </header>
+  <!--Header End-->

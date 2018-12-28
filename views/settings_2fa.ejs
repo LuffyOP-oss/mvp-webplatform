@@ -1,0 +1,206 @@
+<% include partials/header.ejs %>
+
+<div class="container main">
+    <div class="col-md-3">
+        <div class="m-page--sidebar">
+            <div class="m-page--sidebar--navigation">
+                <a class="m-page--sidebar--navigation--item " href="/settings/general"><i class="fas fa-cogs"></i><span>
+                        <%= __('setting_general')%></span></a>
+                <a class="m-page--sidebar--navigation--item " href="/settings/changepassword"><i class="fas fa-unlock-alt"></i><span>
+                        <%= __('setting_general_2')%></span></a>
+                <a class="m-page--sidebar--navigation--item m-page--sidebar--navigation--item-active" href="/settings/twoFactor"><i
+                        class="fas fa-shield-alt"></i><span>
+                        <%= __('2fa')%></span></a>
+
+                <a class="m-page--sidebar--navigation--item" data-toggle="modal" data-target="#modal_referral"><i class="fas fa-bullhorn"></i><span>REFERRAL
+                        LINK</span></a>
+                <div id="modal_referral" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">
+                                    <%= __('referrel_modal_1')%>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <%= __('referrel_text_1')%>
+                                </p>
+                                <input class="link-referrel" type="text" readonly value="https://touristreivew.io/register?referrer=<%= userid %>" />
+                                <p>
+                                    <%= __('referrel_text_2')%>
+                                </p>
+                                <input class="link-referrel" type="text" readonly value="<%= userid %>" />
+                                <p>
+                                    <%= __('referrel_modal_2')%>
+                                    <%= seting['referral_bonus'] %> TRET</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="row-setting">
+                <div class="row-header">
+                    <h4 class="setting-name">
+                        <%= __('twoFactor_title')%>
+                    </h4>
+                </div>
+                <% if(error != ""){ %>
+                <p class="error_text">
+                    <%= error %>
+                </p>
+                <% }else{ if(success != ""){%>
+                <p class="success_text">
+                    <%= success %>
+                </p>
+                <% }} %>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <% if(userinfo['2fa_code'] == null){ %>
+                        <span class="setting_label">
+                            <%= __('2fa_notifi')%> <strong>
+                                <%= seting['2fa_bonus'] %> </strong>
+                            <%= __('2fa_notifi_1')%></span>
+                        <% } %>
+
+                        <% if(userinfo['2fa_status'] == 0){ %>
+                        <div class="setting-step">
+                            <div class="step-title">
+                                <p>
+                                    <%= __('step_1')%>
+                                    <%= __('tai_app')%>
+                                </p>
+                            </div>
+                            <div class="step-content">
+                                <div class="col-md-12">
+                                    <p>
+                                        <%= __('step_1_content')%>
+                                    </p>
+                                </div>
+                                <div class="col-md-12"><a href="https://itunes.apple.com/us/app/google-authenticator/id388497605"><img
+                                            class="app-download" src="/assets/images/apple-app.jpg" alt="Apple Store Download" /></a> <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><img
+                                                class="app-download" src="/assets/images/google-app.jpg" alt="Google Play Download" /></a></div>
+                            </div>
+                        </div>
+
+                        <div class="setting-step">
+                            <div class="step-title">
+                                <p>
+                                    <%= __('step_2')%>
+                                    <%= __('quet_ma')%>
+                                </p>
+                            </div>
+                            <div class="step-content">
+                                <div class="col-md-4">
+                                    <div class="qrcode"><img src="<%= qrcode %>" alt="QR code">
+                                        <p>
+                                            <%= __('step_2_content')%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="fa_code"><strong>
+                                            <%= facode %></strong></div>
+                                    <div class="step2-content">
+                                        <p>
+                                            <%= __('step2_content_1') %>
+                                        </p>
+                                    </div>
+                                    <div class="step2-content">
+                                        <p>
+                                            <%= __('step2_content_2') %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-step">
+                            <div class="step-title">
+                                <p>
+                                    <%= __('step_3')%>
+                                    <%= __('kich_hoat_bao_mat')%>
+                                </p>
+                            </div>
+                            <div class="step-content enable-fa">
+                               <div class="col-md-12 ">
+                                    <form method="POST">
+                                            <div class="divTable">
+                                                <div class="divTableBody">
+                                                    <div class="divTableRow">
+                                                        <div class="divTableCell settingsListItemLabel">
+                                                            <%= __('placeholder_login_2')%>
+                                                        </div>
+                                                        <div class="divTableCell settingsListItem"><input type="password" name="password"
+                                                                placeholder="<%= __('placeholder_login_2')%>" required /></div>
+                                                    </div>
+                                                    <div class="divTableRow">
+                                                        <div class="divTableCell settingsListItemLabel">
+                                                            <%= __('facode_text')%>
+                                                        </div>
+                                                        <div class="divTableCell settingsListItem"><input type="text" name="facode"
+                                                                placeholder="<%= __('facode_text')%>" required /></div>
+                                                    </div>
+                                                    <div class="divTableRow">
+                                                        <div class="divTableCell settingsListItemLabel">
+                                                        </div>
+                                                        <div class="divTableCell settingsListItem"><button class="facode-enable" type="submit" ><%= __('enable_fa_button')%></button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                               </div>
+                            </div>
+                        </div>
+                        <% }else{ %>
+                            <div class="step-content enable-fa">
+                                    <div class="col-md-12 ">
+                                         <form method="POST">
+                                                 <div class="divTable">
+                                                     <div class="divTableBody">
+                                                         <div class="divTableRow">
+                                                             <div class="divTableCell settingsListItemLabel">
+                                                                 <%= __('placeholder_login_2')%>
+                                                             </div>
+                                                             <div class="divTableCell settingsListItem"><input type="password" name="dis_2fa_password"
+                                                                     placeholder="<%= __('placeholder_login_2')%>" required /></div>
+                                                         </div>
+                                                         <div class="divTableRow">
+                                                             <div class="divTableCell settingsListItemLabel">
+                                                                 <%= __('facode_text')%>
+                                                             </div>
+                                                             <div class="divTableCell settingsListItem"><input type="text" name="facode"
+                                                                     placeholder="<%= __('facode_text')%>" required /></div>
+                                                         </div>
+                                                         <div class="divTableRow">
+                                                             <div class="divTableCell settingsListItemLabel">
+                                                             </div>
+                                                             <div class="divTableCell settingsListItem"><button class="facode-enable" type="submit" ><%= __('disable_2fa')%></button></div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </form>
+                                    </div>
+                                 </div>
+                           
+                            <% }%>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

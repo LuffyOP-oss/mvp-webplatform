@@ -1,0 +1,71 @@
+<% include partials/header.ejs %>
+
+<div class="container main">
+    <div class="col-md-3">
+        <div class="m-page--sidebar">
+            <div class="m-page--sidebar--navigation">
+                <div class="wallet-balance">
+                    <div class="token-avatar"><img src="/assets/images/120x120.png" alt="Tourist Review Logo" /></div>
+                    <div class="token-balance">
+                        <p><%= token_balance %></p>
+                    </div>
+                    <div class="token-name">
+                        <p>TRET</p>
+                    </div>
+                    <div class="token-cap">
+                        <p class="price-title"><%= __('tuong_duong_voi_khoang')%> </p>
+                        <p class="price-usd"><%= (0.00000338  * token_balance).toFixed(2) %> $</p>
+                    </div>
+                </div>
+                <a class="m-page--sidebar--navigation--item " href="/wallet/deposit"><i class="fas fa-sign-in-alt"></i><span>DEPOSIT</span></a>
+                <a class="m-page--sidebar--navigation--item " href="/wallet/withdraw"><i class="fas fa-sign-out-alt"></i><span>WITHDRAW</span></a>
+                <a class="m-page--sidebar--navigation--item " href="/wallet/transactions"><i class="fas fa-history"></i><span>TRANSACTIONS</span></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <% if(!walletopen){ %>
+        <div class="row">
+            <div class="no-wallet">
+                <p>
+                    <%= __('wallet_un')%>
+                </p>
+            </div>
+            <div class="no-wallet">
+                <p>
+                    <%= __('wallet_un_1')%>
+                </p>
+            </div>
+            <div class="no-wallet"><a class="enable-twofa" href="/settings/twoFactor">
+                    <%= __('cai_dat_2fa')%></a></div>
+        </div>
+        <% }else{ %>
+            <div class="row">
+                    <div class="row-setting">
+                       <div class="m-token-contributions--overview"><%= __('diem_so')%><p> 0</p></div>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="row-setting">
+                <div class="m-token-contributions--chart m-border">
+                    <div class="m-token-contributions--chart--contribution"><i class="far fa-thumbs-up"></i>
+                        <div class="m-token-contributions--chart--contribution-text"><span>Votes</span><span>+1</span></div>
+                    </div>
+                    <div class="m-token-contributions--chart--contribution"><i class="far fa-comments"></i>
+                        <div class="m-token-contributions--chart--contribution-text"><span>Comments</span><span>+2</span></div>
+                    </div>
+                    <div class="m-token-contributions--chart--contribution"><i class="fas fa-user-plus"></i>
+                        <div class="m-token-contributions--chart--contribution-text"><span>Subscribers</span><span>+4</span></div>
+                    </div>
+                    <div class="m-token-contributions--chart--contribution"><i class="fas fa-retweet"></i>
+                        <div class="m-token-contributions--chart--contribution-text"><span>Repost</span><span>+4</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>
